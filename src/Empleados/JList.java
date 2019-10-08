@@ -14,12 +14,14 @@ import javax.swing.*;
  */
 public class JList extends javax.swing.JFrame {
 
+    static boolean flag = false;
+
     /**
      * Creates new form JList
      */
     public JList() {
         initComponents();
-         jLabelMetodo1.setVisible(false);
+        jLabelMetodo1.setVisible(false);
         jLabelMetodo2.setVisible(false);
         jLabelMetodo3.setVisible(false);
         jTextFieldMetodo1.setVisible(false);
@@ -86,7 +88,10 @@ public class JList extends javax.swing.JFrame {
         jMenuItemTraPorH = new javax.swing.JMenuItem();
         jMenuItemTraMont = new javax.swing.JMenuItem();
         jMenuItemVendedor = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemBorrarTodos = new javax.swing.JMenuItem();
+        jMenuItemBorrarSeleccionado = new javax.swing.JMenuItem();
+        jMenuItemBorrarSeleccion = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -101,9 +106,15 @@ public class JList extends javax.swing.JFrame {
 
         jLabelApellido.setText("Apellido:");
 
-        jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNombreActionPerformed(evt);
+        jTextFieldNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreKeyReleased(evt);
+            }
+        });
+
+        jTextFieldApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldApellidoKeyReleased(evt);
             }
         });
 
@@ -114,30 +125,46 @@ public class JList extends javax.swing.JFrame {
         jLabelMetodo3.setText("jLabel3");
 
         jTextFieldMetodo1.setText("jTextField1");
+        jTextFieldMetodo1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldMetodo1KeyReleased(evt);
+            }
+        });
 
         jTextFieldMetodo2.setText("jTextField1");
+        jTextFieldMetodo2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldMetodo2KeyReleased(evt);
+            }
+        });
 
         jTextFieldMetodo3.setText("jTextField1");
+        jTextFieldMetodo3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldMetodo3KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDatosTrabajadorLayout = new javax.swing.GroupLayout(jPanelDatosTrabajador);
         jPanelDatosTrabajador.setLayout(jPanelDatosTrabajadorLayout);
         jPanelDatosTrabajadorLayout.setHorizontalGroup(
             jPanelDatosTrabajadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDatosTrabajadorLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelDatosTrabajadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelMetodo3)
                     .addComponent(jLabelApellido)
-                    .addComponent(jLabelNombre)
                     .addComponent(jLabelMetodo1)
-                    .addComponent(jLabelMetodo2))
-                .addGap(18, 18, Short.MAX_VALUE)
+                    .addComponent(jLabelMetodo2)
+                    .addComponent(jLabelNombre))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelDatosTrabajadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldMetodo2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldMetodo3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldMetodo1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(97, 97, 97))
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMetodo1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMetodo2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMetodo3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(258, 258, 258))
         );
         jPanelDatosTrabajadorLayout.setVerticalGroup(
             jPanelDatosTrabajadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +239,7 @@ public class JList extends javax.swing.JFrame {
                     .addComponent(jRadioButtonTrabajadorPorHoras)
                     .addComponent(jRadioButtonTrabajadorVendedor)
                     .addComponent(jRadioButtonTrabajadorMontador))
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         jPanelTipoTrabajadorLayout.setVerticalGroup(
             jPanelTipoTrabajadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,6 +264,11 @@ public class JList extends javax.swing.JFrame {
         });
 
         jButtonBorrar.setText("Borrar");
+        jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelTipoTrabajadoresLayout = new javax.swing.GroupLayout(jPanelTipoTrabajadores);
         jPanelTipoTrabajadores.setLayout(jPanelTipoTrabajadoresLayout);
@@ -249,10 +281,9 @@ public class JList extends javax.swing.JFrame {
                         .addComponent(jButtonAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanelTipoTrabajadoresLayout.createSequentialGroup()
-                        .addComponent(jPanelTipoTrabajador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanelTipoTrabajador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanelTipoTrabajadoresLayout.setVerticalGroup(
             jPanelTipoTrabajadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,12 +308,6 @@ public class JList extends javax.swing.JFrame {
         jLabelSeleccioneTrabajador.setText("Seleccione un trabajador para ver su salario ");
 
         jLabelSalario.setText("Salario");
-
-        jTextFieldSalario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSalarioActionPerformed(evt);
-            }
-        });
 
         jButtonBorrarEmpleado.setText("Eliminar Trabajador");
         jButtonBorrarEmpleado.setEnabled(false);
@@ -333,22 +358,68 @@ public class JList extends javax.swing.JFrame {
         jMenuNuevo.setText("Nuevo");
 
         jMenuItemJefePro.setText("Jefe de Proyecto");
+        jMenuItemJefePro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemJefeProActionPerformed(evt);
+            }
+        });
         jMenuNuevo.add(jMenuItemJefePro);
 
         jMenuItemTraPorH.setText("Trbajador por horas");
+        jMenuItemTraPorH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTraPorHActionPerformed(evt);
+            }
+        });
         jMenuNuevo.add(jMenuItemTraPorH);
 
         jMenuItemTraMont.setText("Trabajador montador");
+        jMenuItemTraMont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTraMontActionPerformed(evt);
+            }
+        });
         jMenuNuevo.add(jMenuItemTraMont);
 
         jMenuItemVendedor.setText("Trabajador vendedor");
+        jMenuItemVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemVendedorActionPerformed(evt);
+            }
+        });
         jMenuNuevo.add(jMenuItemVendedor);
 
         jMenuTrabajador.add(jMenuNuevo);
+        jMenuTrabajador.add(jSeparator1);
 
         jMenuItemBorrarTodos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemBorrarTodos.setText("Borrar todos");
+        jMenuItemBorrarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBorrarTodosActionPerformed(evt);
+            }
+        });
         jMenuTrabajador.add(jMenuItemBorrarTodos);
+
+        jMenuItemBorrarSeleccionado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemBorrarSeleccionado.setText("Borrar seleccionado");
+        jMenuItemBorrarSeleccionado.setEnabled(false);
+        jMenuItemBorrarSeleccionado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBorrarSeleccionadoActionPerformed(evt);
+            }
+        });
+        jMenuTrabajador.add(jMenuItemBorrarSeleccionado);
+
+        jMenuItemBorrarSeleccion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemBorrarSeleccion.setText("Borrar seleccion");
+        jMenuItemBorrarSeleccion.setEnabled(false);
+        jMenuItemBorrarSeleccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBorrarSeleccionActionPerformed(evt);
+            }
+        });
+        jMenuTrabajador.add(jMenuItemBorrarSeleccion);
 
         jMenuBar.add(jMenuTrabajador);
 
@@ -382,29 +453,52 @@ public class JList extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirActionPerformed
-        // TODO add your handling code here:
+        String nombre = jTextFieldNombre.getText();
+        String ape = jTextFieldApellido.getText();
+
+        if (jRadioButtonJefeDeProyecto.isSelected()) {
+            double salarioB = Double.parseDouble(jTextFieldMetodo1.getText());
+            double numPro = Double.parseDouble(jTextFieldMetodo2.getText());
+            Empleado emp = (Empleado) new JefeDeProyectos(nombre, ape, salarioB, (int) numPro);
+        }
+        if (jRadioButtonTrabajadorPorHoras.isSelected()) {
+            double numHoras = Double.parseDouble(jTextFieldMetodo1.getText());
+            double salHora = Double.parseDouble(jTextFieldMetodo2.getText());
+            Empleado emp = (Empleado) new TrabajadorPorHoras(nombre, ape, (int) numHoras, salHora);
+        }
+        if (jRadioButtonTrabajadorMontador.isSelected()) {
+            double numElec = Double.parseDouble(jTextFieldMetodo1.getText());
+            double impUni = Double.parseDouble(jTextFieldMetodo2.getText());
+            Empleado emp = (Empleado) new Montador(nombre, ape, (int) numElec, impUni);
+        }
+        if (jRadioButtonTrabajadorVendedor.isSelected()) {
+            double elecVen = Double.parseDouble(jTextFieldMetodo1.getText());
+            double comision = Double.parseDouble(jTextFieldMetodo2.getText());
+            double salB = Double.parseDouble(jTextFieldMetodo3.getText());
+            Empleado emp = (Empleado) new Vendedor(nombre, ape, (int) elecVen, comision, salB);
+        }
     }//GEN-LAST:event_jButtonAñadirActionPerformed
 
-    private void jTextFieldSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSalarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSalarioActionPerformed
-
-    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombreActionPerformed
-
     private void jListEmpleadosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListEmpleadosValueChanged
-       jButtonBorrarEmpleado.setEnabled(true);
-       Empleado emp = (Empleado)jListEmpleados.getSelectedValue();
-       jTextFieldSalario.setText(Double.toString(emp.salario()));
+        Empleado emp = (Empleado) jListEmpleados.getSelectedValue();
+        jMenuItemBorrarSeleccion.setEnabled(true);
+        jMenuItemBorrarSeleccionado.setEnabled(true);
+        if (flag) {
+            jTextFieldSalario.setText(Double.toString(emp.salario()));
+        }
+        flag = true;
+        jButtonBorrarEmpleado.setEnabled(true);
     }//GEN-LAST:event_jListEmpleadosValueChanged
 
     private void jButtonBorrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarEmpleadoActionPerformed
+        flag = false;
+        Empleado.modeloLista.remove((int) jListEmpleados.getSelectedIndex());
+        jTextFieldSalario.setText("");
         jButtonBorrarEmpleado.setEnabled(false);
-        jListEmpleados.remove(jListEmpleados.getSelectedIndex());
-        Empleado.modeloLista.remove(jListEmpleados.getSelectedIndex());
-        
-       
+        jMenuItemBorrarSeleccion.setEnabled(false);
+        jMenuItemBorrarSeleccionado.setEnabled(false);
+
+
     }//GEN-LAST:event_jButtonBorrarEmpleadoActionPerformed
 
     private void jRadioButtonJefeDeProyectoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonJefeDeProyectoItemStateChanged
@@ -415,20 +509,20 @@ public class JList extends javax.swing.JFrame {
         jTextFieldMetodo1.setVisible(false);
         jTextFieldMetodo2.setVisible(false);
         jTextFieldMetodo3.setVisible(false);
-        
+
         //Habilito los necesarios para este boton
         jLabelMetodo1.setVisible(true);
         jLabelMetodo1.setText("Salario base:");
-        
+
         jLabelMetodo2.setVisible(true);
         jLabelMetodo2.setText("Numero proyectos:");
 
         jTextFieldMetodo1.setVisible(true);
         jTextFieldMetodo1.setText("");
-        
+
         jTextFieldMetodo2.setVisible(true);
         jTextFieldMetodo2.setText("");
-                
+
     }//GEN-LAST:event_jRadioButtonJefeDeProyectoItemStateChanged
 
     private void jRadioButtonTrabajadorPorHorasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonTrabajadorPorHorasItemStateChanged
@@ -439,42 +533,42 @@ public class JList extends javax.swing.JFrame {
         jTextFieldMetodo1.setVisible(false);
         jTextFieldMetodo2.setVisible(false);
         jTextFieldMetodo3.setVisible(false);
-        
+
         //Habilito los necesarios para este boton
         jLabelMetodo1.setVisible(true);
         jLabelMetodo1.setText("Numero de horas trabajadas:");
-        
+
         jLabelMetodo2.setVisible(true);
         jLabelMetodo2.setText("Salario por hora:");
-        
+
         jTextFieldMetodo1.setVisible(true);
         jTextFieldMetodo1.setText("");
-        
+
         jTextFieldMetodo2.setVisible(true);
         jTextFieldMetodo2.setText("");
-        
-        
+
+
     }//GEN-LAST:event_jRadioButtonTrabajadorPorHorasItemStateChanged
 
     private void jRadioButtonTrabajadorMontadorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonTrabajadorMontadorItemStateChanged
-       //Deshabilito los 6 campos por defecto
+        //Deshabilito los 6 campos por defecto
         jLabelMetodo1.setVisible(false);
         jLabelMetodo2.setVisible(false);
         jLabelMetodo3.setVisible(false);
         jTextFieldMetodo1.setVisible(false);
         jTextFieldMetodo2.setVisible(false);
         jTextFieldMetodo3.setVisible(false);
-        
+
         //Habilito los necesarios para este boton
         jLabelMetodo1.setVisible(true);
         jLabelMetodo1.setText("Numero de electrodomesticos:");
-        
+
         jLabelMetodo2.setVisible(true);
         jLabelMetodo2.setText("Importe por unidad:");
-                
+
         jTextFieldMetodo1.setVisible(true);
         jTextFieldMetodo1.setText("");
-        
+
         jTextFieldMetodo2.setVisible(true);
         jTextFieldMetodo2.setText("");
     }//GEN-LAST:event_jRadioButtonTrabajadorMontadorItemStateChanged
@@ -487,26 +581,357 @@ public class JList extends javax.swing.JFrame {
         jTextFieldMetodo1.setVisible(false);
         jTextFieldMetodo2.setVisible(false);
         jTextFieldMetodo3.setVisible(false);
-        
+
         //Habilito los necesarios para este boton
         jLabelMetodo1.setVisible(true);
         jLabelMetodo1.setText("Electrodomesticos vendidos:");
-        
+
         jLabelMetodo2.setVisible(true);
         jLabelMetodo2.setText("Comision:");
-        
+
         jLabelMetodo3.setVisible(true);
         jLabelMetodo3.setText("Salario base:");
-        
+
         jTextFieldMetodo1.setVisible(true);
         jTextFieldMetodo1.setText("");
-        
+
         jTextFieldMetodo2.setVisible(true);
         jTextFieldMetodo2.setText("");
-        
+
         jTextFieldMetodo3.setVisible(true);
         jTextFieldMetodo3.setText("");
     }//GEN-LAST:event_jRadioButtonTrabajadorVendedorItemStateChanged
+
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+        jTextFieldNombre.setText("");
+        jTextFieldApellido.setText("");
+        jTextFieldMetodo1.setText("");
+        jTextFieldMetodo2.setText("");
+        jTextFieldMetodo3.setText("");
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
+
+    private void jTextFieldNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyReleased
+        boolean esNumero;
+        if (jTextFieldNombre.getText().length() > 0) {
+            if (jTextFieldApellido.getText().length() > 0) {
+                try {
+                    Double.parseDouble(jTextFieldMetodo1.getText());
+                    esNumero = true;
+                } catch (NumberFormatException excepcion) {
+                    esNumero = false;
+                }
+                if (jTextFieldMetodo1.getText().length() > 0 && esNumero) {
+                    try {
+                        Double.parseDouble(jTextFieldMetodo2.getText());
+                        esNumero = true;
+                    } catch (NumberFormatException excepcion) {
+                        esNumero = false;
+                    }
+                    if (jTextFieldMetodo2.getText().length() > 0 && esNumero) {
+                        if (jRadioButtonTrabajadorVendedor.isSelected()) {
+                            try {
+                                Double.parseDouble(jTextFieldMetodo3.getText());
+                                esNumero = true;
+                            } catch (NumberFormatException excepcion) {
+                                esNumero = false;
+                            }
+                            if (jTextFieldMetodo3.getText().length() > 0 && esNumero) {
+                                jButtonAñadir.setEnabled(true);
+                            } else {
+                                jButtonAñadir.setEnabled(false);
+                            }
+                        } else {
+                            jButtonAñadir.setEnabled(true);
+                        }
+                    } else {
+                        jButtonAñadir.setEnabled(false);
+                    }
+                } else {
+                    jButtonAñadir.setEnabled(false);
+                }
+            } else {
+                jButtonAñadir.setEnabled(false);
+            }
+        } else {
+            jButtonAñadir.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTextFieldNombreKeyReleased
+
+    private void jTextFieldApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellidoKeyReleased
+        boolean esNumero;
+        if (jTextFieldNombre.getText().length() > 0) {
+            if (jTextFieldApellido.getText().length() > 0) {
+                try {
+                    Double.parseDouble(jTextFieldMetodo1.getText());
+                    esNumero = true;
+                } catch (NumberFormatException excepcion) {
+                    esNumero = false;
+                }
+                if (jTextFieldMetodo1.getText().length() > 0 && esNumero) {
+                    try {
+                        Double.parseDouble(jTextFieldMetodo2.getText());
+                        esNumero = true;
+                    } catch (NumberFormatException excepcion) {
+                        esNumero = false;
+                    }
+                    if (jTextFieldMetodo2.getText().length() > 0 && esNumero) {
+
+                        if (jRadioButtonTrabajadorVendedor.isSelected()) {
+                            try {
+                                Double.parseDouble(jTextFieldMetodo3.getText());
+                                esNumero = true;
+                            } catch (NumberFormatException excepcion) {
+                                esNumero = false;
+                            }
+                            if (jTextFieldMetodo3.getText().length() > 0 && esNumero) {
+                                jButtonAñadir.setEnabled(true);
+                            } else {
+                                jButtonAñadir.setEnabled(false);
+                            }
+                        } else {
+                            jButtonAñadir.setEnabled(true);
+                        }
+                    } else {
+                        jButtonAñadir.setEnabled(false);
+                    }
+                } else {
+                    jButtonAñadir.setEnabled(false);
+                }
+            } else {
+                jButtonAñadir.setEnabled(false);
+            }
+        } else {
+            jButtonAñadir.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTextFieldApellidoKeyReleased
+
+    private void jTextFieldMetodo1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMetodo1KeyReleased
+        boolean esNumero;
+        if (jTextFieldNombre.getText().length() > 0) {
+            if (jTextFieldApellido.getText().length() > 0) {
+                try {
+                    Double.parseDouble(jTextFieldMetodo1.getText());
+                    esNumero = true;
+                } catch (NumberFormatException excepcion) {
+                    esNumero = false;
+                }
+                if (jTextFieldMetodo1.getText().length() > 0 && esNumero) {
+                    try {
+                        Double.parseDouble(jTextFieldMetodo2.getText());
+                        esNumero = true;
+                    } catch (NumberFormatException excepcion) {
+                        esNumero = false;
+                    }
+                    if (jTextFieldMetodo2.getText().length() > 0 && esNumero) {
+                        if (jRadioButtonTrabajadorVendedor.isSelected()) {
+                            try {
+                                Double.parseDouble(jTextFieldMetodo3.getText());
+                                esNumero = true;
+                            } catch (NumberFormatException excepcion) {
+                                esNumero = false;
+                            }
+                            if (jTextFieldMetodo3.getText().length() > 0 && esNumero) {
+                                jButtonAñadir.setEnabled(true);
+                            } else {
+                                jButtonAñadir.setEnabled(false);
+                            }
+                        } else {
+                            jButtonAñadir.setEnabled(true);
+                        }
+                    } else {
+                        jButtonAñadir.setEnabled(false);
+                    }
+                } else {
+                    jButtonAñadir.setEnabled(false);
+                }
+            } else {
+                jButtonAñadir.setEnabled(false);
+            }
+        } else {
+            jButtonAñadir.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTextFieldMetodo1KeyReleased
+
+    private void jTextFieldMetodo2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMetodo2KeyReleased
+        boolean esNumero;
+        if (jTextFieldNombre.getText().length() > 0) {
+            if (jTextFieldApellido.getText().length() > 0) {
+                try {
+                    Double.parseDouble(jTextFieldMetodo1.getText());
+                    esNumero = true;
+                } catch (NumberFormatException excepcion) {
+                    esNumero = false;
+                }
+                if (jTextFieldMetodo1.getText().length() > 0 && esNumero) {
+                    try {
+                        Double.parseDouble(jTextFieldMetodo2.getText());
+                        esNumero = true;
+                    } catch (NumberFormatException excepcion) {
+                        esNumero = false;
+                    }
+                    if (jTextFieldMetodo2.getText().length() > 0 && esNumero) {
+                        if (jRadioButtonTrabajadorVendedor.isSelected()) {
+                            try {
+                                Double.parseDouble(jTextFieldMetodo3.getText());
+                                esNumero = true;
+                            } catch (NumberFormatException excepcion) {
+                                esNumero = false;
+                            }
+                            if (jTextFieldMetodo3.getText().length() > 0 && esNumero) {
+                                jButtonAñadir.setEnabled(true);
+                            } else {
+                                jButtonAñadir.setEnabled(false);
+                            }
+                        } else {
+                            jButtonAñadir.setEnabled(true);
+                        }
+                    } else {
+                        jButtonAñadir.setEnabled(false);
+                    }
+                } else {
+                    jButtonAñadir.setEnabled(false);
+                }
+            } else {
+                jButtonAñadir.setEnabled(false);
+            }
+        } else {
+            jButtonAñadir.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTextFieldMetodo2KeyReleased
+
+    private void jTextFieldMetodo3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMetodo3KeyReleased
+        boolean esNumero;
+        if (jRadioButtonTrabajadorVendedor.isSelected()) {
+            if (jTextFieldNombre.getText().length() > 0) {
+                if (jTextFieldApellido.getText().length() > 0) {
+                    try {
+                        Double.parseDouble(jTextFieldMetodo1.getText());
+                        esNumero = true;
+                    } catch (NumberFormatException excepcion) {
+                        esNumero = false;
+                    }
+                    if (jTextFieldMetodo1.getText().length() > 0 && esNumero) {
+                        try {
+                            Double.parseDouble(jTextFieldMetodo2.getText());
+                            esNumero = true;
+                        } catch (NumberFormatException excepcion) {
+                            esNumero = false;
+                        }
+                        if (jTextFieldMetodo2.getText().length() > 0 && esNumero) {
+                            if (jRadioButtonTrabajadorVendedor.isSelected()) {
+                                try {
+                                    Double.parseDouble(jTextFieldMetodo3.getText());
+                                    esNumero = true;
+                                } catch (NumberFormatException excepcion) {
+                                    esNumero = false;
+                                }
+                                if (jTextFieldMetodo3.getText().length() > 0 && esNumero) {
+                                    jButtonAñadir.setEnabled(true);
+                                } else {
+                                    jButtonAñadir.setEnabled(false);
+                                }
+                            } else {
+                                jButtonAñadir.setEnabled(true);
+                            }
+                        } else {
+                            jButtonAñadir.setEnabled(false);
+                        }
+                    } else {
+                        jButtonAñadir.setEnabled(false);
+                    }
+                } else {
+                    jButtonAñadir.setEnabled(false);
+                }
+            } else {
+                jButtonAñadir.setEnabled(false);
+            }
+        } else {
+            if (jTextFieldNombre.getText().length() > 0) {
+                if (jTextFieldApellido.getText().length() > 0) {
+                    try {
+                        Double.parseDouble(jTextFieldMetodo1.getText());
+                        esNumero = true;
+                    } catch (NumberFormatException excepcion) {
+                        esNumero = false;
+                    }
+                    if (jTextFieldMetodo1.getText().length() > 0 && esNumero) {
+                        try {
+                            Double.parseDouble(jTextFieldMetodo2.getText());
+                            esNumero = true;
+                        } catch (NumberFormatException excepcion) {
+                            esNumero = false;
+                        }
+                        if (jTextFieldMetodo2.getText().length() > 0 && esNumero) {
+                            if (jRadioButtonTrabajadorVendedor.isSelected()) {
+                                try {
+                                    Double.parseDouble(jTextFieldMetodo3.getText());
+                                    esNumero = true;
+                                } catch (NumberFormatException excepcion) {
+                                    esNumero = false;
+                                }
+                                if (jTextFieldMetodo3.getText().length() > 0 && esNumero) {
+                                    jButtonAñadir.setEnabled(true);
+                                } else {
+                                    jButtonAñadir.setEnabled(false);
+                                }
+                            } else {
+                                jButtonAñadir.setEnabled(true);
+                            }
+                        } else {
+                            jButtonAñadir.setEnabled(false);
+                        }
+                    } else {
+                        jButtonAñadir.setEnabled(false);
+                    }
+                } else {
+                    jButtonAñadir.setEnabled(false);
+                }
+            } else {
+                jButtonAñadir.setEnabled(false);
+            }
+        }
+    }//GEN-LAST:event_jTextFieldMetodo3KeyReleased
+
+    private void jMenuItemBorrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBorrarTodosActionPerformed
+        Empleado.modeloLista.clear();
+        jMenuItemBorrarSeleccion.setEnabled(false);
+        jMenuItemBorrarSeleccionado.setEnabled(false);
+    }//GEN-LAST:event_jMenuItemBorrarTodosActionPerformed
+
+    private void jMenuItemBorrarSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBorrarSeleccionadoActionPerformed
+        flag = false;
+        Empleado.modeloLista.remove((int) jListEmpleados.getSelectedIndex());
+        jTextFieldSalario.setText("");
+        jMenuItemBorrarSeleccion.setEnabled(false);
+        jMenuItemBorrarSeleccionado.setEnabled(false);
+    }//GEN-LAST:event_jMenuItemBorrarSeleccionadoActionPerformed
+
+    private void jMenuItemBorrarSeleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBorrarSeleccionActionPerformed
+        flag = false;
+        int[] seleccion = new int[jListEmpleados.getSelectedIndices().length];
+        for (int i = 0; i < seleccion.length; i++) {
+            Empleado.modeloLista.remove(i);
+        }
+        jTextFieldSalario.setText("");
+        jMenuItemBorrarSeleccion.setEnabled(false);
+        jMenuItemBorrarSeleccionado.setEnabled(false);
+    }//GEN-LAST:event_jMenuItemBorrarSeleccionActionPerformed
+
+    private void jMenuItemJefeProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemJefeProActionPerformed
+        jRadioButtonJefeDeProyecto.setSelected(true);
+    }//GEN-LAST:event_jMenuItemJefeProActionPerformed
+
+    private void jMenuItemTraPorHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTraPorHActionPerformed
+        jRadioButtonTrabajadorPorHoras.setSelected(true);
+    }//GEN-LAST:event_jMenuItemTraPorHActionPerformed
+
+    private void jMenuItemTraMontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTraMontActionPerformed
+        jRadioButtonTrabajadorMontador.setSelected(true);
+    }//GEN-LAST:event_jMenuItemTraMontActionPerformed
+
+    private void jMenuItemVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVendedorActionPerformed
+        jRadioButtonTrabajadorVendedor.setSelected(true);
+    }//GEN-LAST:event_jMenuItemVendedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -560,6 +985,8 @@ public class JList extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenuArchivo;
     private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JMenuItem jMenuItemBorrarSeleccion;
+    private javax.swing.JMenuItem jMenuItemBorrarSeleccionado;
     private javax.swing.JMenuItem jMenuItemBorrarTodos;
     private javax.swing.JMenuItem jMenuItemJefePro;
     private javax.swing.JMenuItem jMenuItemTraMont;
@@ -576,6 +1003,7 @@ public class JList extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonTrabajadorPorHoras;
     private javax.swing.JRadioButton jRadioButtonTrabajadorVendedor;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldMetodo1;
     private javax.swing.JTextField jTextFieldMetodo2;

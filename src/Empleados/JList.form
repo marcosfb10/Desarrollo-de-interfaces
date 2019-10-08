@@ -43,24 +43,38 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Jefe de Proyecto"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemJefeProActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTraPorH">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Trbajador por horas"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTraPorHActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTraMont">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Trabajador montador"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTraMontActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemVendedor">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Trabajador vendedor"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemVendedorActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBorrarTodos">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
@@ -68,6 +82,33 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Borrar todos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemBorrarTodosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBorrarSeleccionado">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+P"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Borrar seleccionado"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemBorrarSeleccionadoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBorrarSeleccion">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+I"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Borrar seleccion"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemBorrarSeleccionActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -104,7 +145,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanelTipoTrabajadores" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jPanel1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -139,22 +180,23 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabelMetodo3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelApellido" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelNombre" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelMetodo1" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelMetodo2" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelNombre" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextFieldMetodo2" min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="jTextFieldMetodo3" min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="jTextFieldMetodo1" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="jTextFieldApellido" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="jTextFieldApellido" min="-2" pref="122" max="-2" attributes="0"/>
                       <Component id="jTextFieldNombre" min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="jTextFieldMetodo1" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="jTextFieldMetodo2" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="jTextFieldMetodo3" min="-2" pref="122" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -204,10 +246,13 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldNombre">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNombreActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldNombreKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldApellido">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldApellidoKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelMetodo1">
           <Properties>
@@ -228,16 +273,28 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldMetodo1KeyReleased"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldMetodo2">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldMetodo2KeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldMetodo3">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldMetodo3KeyReleased"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -260,13 +317,11 @@
                           <Component id="jButtonAñadir" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButtonBorrar" min="-2" pref="115" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jPanelTipoTrabajador" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jPanelTipoTrabajador" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -305,7 +360,7 @@
                           <Component id="jRadioButtonTrabajadorVendedor" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jRadioButtonTrabajadorMontador" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="380" max="32767" attributes="0"/>
+                      <EmptySpace pref="213" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -385,6 +440,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Borrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBorrarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -471,9 +529,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldSalario">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSalarioActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonBorrarEmpleado">
           <Properties>
